@@ -11,5 +11,5 @@ class StudentAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class StudentAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'price', 'category')
-    last_filter = ('category',)
+    list_filter = ('category',)
     search_fields = ('name', 'description')
