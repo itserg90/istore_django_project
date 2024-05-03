@@ -1,0 +1,70 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "IPhones",
+      "description": "russia"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Laptops",
+      "description": "russia"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Iphone15",
+      "description": "15",
+      "image": "ip.jpg",
+      "category": 1,
+      "price": 100000.0,
+      "created_at": "2024-05-03",
+      "updated_at": "2024-05-03"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "IPhone16",
+      "description": "16",
+      "image": "ip_DzIZB9L.jpg",
+      "category": 1,
+      "price": 200000.0,
+      "created_at": "2024-05-03",
+      "updated_at": "2024-05-03"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "HP",
+      "description": "hp",
+      "image": "ip_BwApHBb.jpg",
+      "category": 2,
+      "price": 100000.0,
+      "created_at": "2024-05-03",
+      "updated_at": "2024-05-03"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "MAC",
+      "description": "mac",
+      "image": "ip_dmGlafP.jpg",
+      "category": 1,
+      "price": 200000.0,
+      "created_at": "2024-05-03",
+      "updated_at": "2024-05-03"
+    }
+  }
+]
