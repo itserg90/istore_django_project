@@ -5,6 +5,9 @@ class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='имя')
     description = models.TextField(verbose_name='описание')
 
+    def __str__(self):
+        return f'{self.name}: {self.description}'
+
     class Meta:
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
@@ -18,6 +21,9 @@ class Product(models.Model):
     price = models.FloatField(verbose_name='цена за покупку')
     created_at = models.DateField(verbose_name='дата создания(записи в БД)')
     updated_at = models.DateField(verbose_name='дата последнего изменения(записи в БД)')
+
+    def __str__(self):
+        return f'({self.name}, {self.description}, {self.image}, {self.price}, {self.created_at}, {self.updated_at})'
 
     class Meta:
         verbose_name = 'продукт'
