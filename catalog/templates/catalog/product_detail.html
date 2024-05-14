@@ -1,0 +1,26 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{{ product.image | media_filter }}">
+                    <div class="card-body">
+                        <p class="card-text">Название: {{ object.name }} ({{ object.slug }})</p>
+                        <p class="card-text">Цена: {{ object.price | floatformat:"0g"}} руб.</p>
+                        <p class="card-text">Дата создания: {{ object.created_at }}</p>
+                        <p class="card-text">Дата обновления: {{ object.updated_at }}</p>
+                        <p class="card-text">{{ object.description }}</p>
+                        <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Назад</a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    Просмотры: {{ object.views_count }}
+                </div>
+            </div>
+    </div>
+</div>
+
+{% endblock %}
