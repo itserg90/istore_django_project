@@ -5,10 +5,10 @@
         <div class="col-6">
             <form class="row" method="post" enctype="multipart/form-data">
                 <div class="col">
-                    <p class="card-text">Действительно хотите удалить товар: {{ object.name }}</p>
+                    <p class="card-text">Действительно хотите удалить товар: {{ object.title }}</p>
                     {% csrf_token %}
                     <button type="submit" class="btn btn-primary">Удалить</button>
-                    <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Отмена</a>
+                    <a href="{% url 'catalog:blog_list' %}" class="btn btn-secondary">Отмена</a>
                 </div>
             </form>
         </div>
