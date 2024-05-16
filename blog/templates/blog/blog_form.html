@@ -1,4 +1,4 @@
-{% extends 'catalog/base.html' %}
+{% extends 'blog/base.html' %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -14,7 +14,7 @@
                         Создать
                         {% endif %}
                     </button>
-                    <a href="{% url 'catalog:blog_list' %}" class="btn btn-secondary">Отмена</a>
+                    <a href="{% url 'blog:blog_list' %}" class="btn btn-secondary">Отмена</a>
                 </div>
             </form>
         </div>
