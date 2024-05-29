@@ -27,7 +27,7 @@ class Product(models.Model):
     views_count = models.IntegerField(verbose_name='просмотры', default=0)
 
     def __str__(self):
-        return f'({self.name}, {self.description}, {self.image}, {self.price}, {self.created_at}, {self.updated_at})'
+        return f'{self.name}'
 
     class Meta:
         verbose_name = 'продукт'
@@ -45,3 +45,17 @@ class Contact(models.Model):
     class Meta:
         verbose_name = 'контакт'
         verbose_name_plural = 'контакты'
+
+
+class Version(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Продукт')
+    version = models.CharField(max_length=50, verbose_name='Версия')
+    name = models.CharField(max_length=100, verbose_name='имя')
+    current_version = models.BooleanField(default=False, verbose_name='активная версия')
+
+    class Meta:
+        verbose_name = 'версия продукта'
+        verbose_name_plural = 'версии продукта'
+
+    def __str__(self):
+        return f'({self.product}, {self.version}, {self.name}, {self.current_version})'

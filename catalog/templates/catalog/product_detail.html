@@ -4,18 +4,18 @@
 
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="{{ object.image | media_filter }}">
-                    <div class="card-body">
-                        <p class="card-text">Название: {{ object.name }}</p>
-                        <p class="card-text">Дата создания: {{ object.created_at }}</p>
-                        <p class="card-text">Дата изменения: {{ object.updated_at }}</p>
-                        <p class="card-text">{{ object.description}}</p>
-                        <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Назад</a>
-                    </div>
+        <div class="col">
+            <div class="card shadow-sm">
+                <img src="{{ object.image | media_filter }}">
+                <div class="card-body">
+                    <p class="card-text">Название: {{ object.name }}</p>
+                    <p class="card-text">Дата создания: {{ object.created_at }}</p>
+                    <p class="card-text">Дата изменения: {{ object.updated_at }}</p>
+                    <p class="card-text">{{ object.description}}</p>
+                    <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Назад</a>
                 </div>
             </div>
+        </div>
     </div>
 </div>
 
