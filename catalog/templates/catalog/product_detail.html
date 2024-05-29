@@ -4,7 +4,7 @@
 
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
-        <div class="col">
+        <div class="col-6">
             <div class="card shadow-sm">
                 <img src="{{ object.image | media_filter }}">
                 <div class="card-body">
@@ -13,6 +13,8 @@
                     <p class="card-text">Дата изменения: {{ object.updated_at }}</p>
                     <p class="card-text">{{ object.description}}</p>
                     <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Назад</a>
+                    <a class="btn btn-secondary" href="{% url 'catalog:product_update' object.pk %}"
+                                   role="button">Изменить</a>
                 </div>
             </div>
         </div>

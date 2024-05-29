@@ -3,8 +3,8 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-6">
-            <form class="row" method="post" enctype="multipart/form-data">
+        <form class="row" method="post" enctype="multipart/form-data">
+            <div class="col-6">
                 <div class="col">
                     {% csrf_token %}
                     {{ form.as_p }}
@@ -17,8 +17,14 @@
                     </button>
                     <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Отмена</a>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="col-6">
+                {{ formset.management_form }}
+                {% for form in formset.forms %}
+                {{ form.as_p }}
+                {% endfor %}
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
