@@ -42,7 +42,7 @@ class BlogUpdateView(UpdateView):
     fields = ['title', 'content', 'image', 'is_published']
 
     def get_success_url(self):
-        return reverse('blog:blog_detail', args=[self.kwargs.get('pk')])
+        return reverse('blog:blog_detail', args=[self.kwargs.get('slug')])
 
 
 class BlogDeleteView(DeleteView):

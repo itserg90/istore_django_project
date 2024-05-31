@@ -6,15 +6,17 @@
     <div class="container">
         <div class="col-6">
             <div class="card shadow-sm">
+                {% if object.image %}
                 <img src="{{ object.image | media_filter }}">
+                {% endif %}
                 <div class="card-body">
                     <p class="card-text">Название: {{ object.name }}</p>
                     <p class="card-text">Дата создания: {{ object.created_at }}</p>
                     <p class="card-text">Дата изменения: {{ object.updated_at }}</p>
                     <p class="card-text">{{ object.description}}</p>
                     <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Назад</a>
-                    <a class="btn btn-secondary" href="{% url 'catalog:product_update' object.pk %}"
-                                   role="button">Изменить</a>
+                    <a class="btn btn-secondary" href="{% url 'catalog:product_update' object.slug %}"
+                       role="button">Изменить</a>
                 </div>
             </div>
         </div>

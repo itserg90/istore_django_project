@@ -37,7 +37,7 @@ class ProductUpdateView(UpdateView):
     form_class = ProductForm
 
     def get_success_url(self):
-        return reverse_lazy('catalog:product_detail', args=[self.kwargs.get('pk')])
+        return reverse_lazy('catalog:product_detail', args=[self.kwargs.get('slug')])
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -54,7 +54,6 @@ class ProductUpdateView(UpdateView):
         formset = context_data['formset']
         if form.is_valid() and formset.is_valid():
             self.object = form.save()
-            # if not current_v:
             formset.instance = self.object
             formset.save()
             return super().form_valid(form)

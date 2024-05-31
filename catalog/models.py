@@ -1,8 +1,17 @@
 from django.db import models
+from pytils.translit import slugify
 
 
-class Category(models.Model):
+class SlugMixin:
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
+
+
+class Category(SlugMixin, models.Model):
     name = models.CharField(max_length=100, verbose_name='имя')
+    slug = models.SlugField(max_length=100, verbose_name='slug', unique=True, db_index=True)
     description = models.TextField(verbose_name='описание')
 
     def __str__(self):
@@ -13,9 +22,9 @@ class Category(models.Model):
         verbose_name_plural = 'категории'
 
 
-class Product(models.Model):
+class Product(SlugMixin, models.Model):
     name = models.CharField(max_length=100, verbose_name='имя')
-    slug = models.CharField(max_length=100, verbose_name='slug', null=True, blank=True)
+    slug = models.SlugField(max_length=100, verbose_name='slug', unique=True, db_index=True)
     description = models.TextField(verbose_name='описание')
     image = models.ImageField(verbose_name='изображение', blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='категория')
@@ -33,8 +42,9 @@ class Product(models.Model):
         verbose_name_plural = 'продукты'
 
 
-class Contact(models.Model):
+class Contact(SlugMixin, models.Model):
     name = models.CharField(max_length=100, verbose_name='имя')
+    slug = models.SlugField(max_length=100, verbose_name='slug', unique=True, db_index=True)
     phone = models.CharField(max_length=100, verbose_name='телефон')
     message = models.TextField(verbose_name='сообщение')
 
@@ -46,10 +56,11 @@ class Contact(models.Model):
         verbose_name_plural = 'контакты'
 
 
-class Version(models.Model):
+class Version(SlugMixin, models.Model):
+    name = models.CharField(max_length=100, verbose_name='имя')
+    slug = models.SlugField(max_length=100, verbose_name='slug', unique=True, db_index=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Продукт')
     version = models.CharField(max_length=50, verbose_name='Версия')
-    name = models.CharField(max_length=100, verbose_name='имя')
     current_version = models.BooleanField(default=False, verbose_name='активная версия')
 
     class Meta:

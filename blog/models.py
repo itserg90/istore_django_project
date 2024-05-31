@@ -1,14 +1,19 @@
 from django.db import models
+from pytils.translit import slugify
 
 
 class Blog(models.Model):
     title = models.CharField(max_length=100, verbose_name='название')
-    slug = models.CharField(max_length=100, verbose_name='slug', null=True, blank=True)
+    slug = models.SlugField(max_length=100, verbose_name='slug', unique=True, db_index=True)
     content = models.TextField(verbose_name='содержимое')
     image = models.ImageField(verbose_name='изображение', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата и время создания')
     is_published = models.BooleanField(default=True, verbose_name='опубликовано')
     views_count = models.IntegerField(verbose_name='просмотры', default=0)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return f'({self.title}, {self.content}, {self.image}, {self.created_at})'
