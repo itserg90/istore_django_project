@@ -191,9 +191,11 @@
                 <h1 class="fw-light">Цифровой мир</h1>
                 <p class="lead text-body-secondary">Интернет-магазин</p>
             </div>
+            {% if user.is_authenticated %}
             <p>
                 <a href="{% url 'catalog:product_create' %}" class="btn btn-primary my-2">Создать продукт</a>
             </p>
+            {% endif %}
         </div>
     </section>
 

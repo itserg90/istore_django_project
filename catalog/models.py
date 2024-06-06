@@ -1,6 +1,8 @@
 from django.db import models
 from pytils.translit import slugify
 
+from users.models import User
+
 
 class SlugMixin:
 
@@ -33,6 +35,8 @@ class Product(SlugMixin, models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='дата последнего изменения(записи в БД)')
     is_published = models.BooleanField(default=True, verbose_name='опубликовано')
     views_count = models.IntegerField(verbose_name='просмотры', default=0)
+
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, verbose_name='пользователь')
 
     def __str__(self):
         return f'{self.name}'

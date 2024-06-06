@@ -56,23 +56,42 @@ files = [
 
 [[package]]
 name = "django"
-version = "5.0.4"
+version = "4.2.2"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
-python-versions = ">=3.10"
+python-versions = ">=3.8"
 files = [
-    {file = "Django-5.0.4-py3-none-any.whl", hash = "sha256:916423499d75d62da7aa038d19aef23d23498d8df229775eb0a6309ee1013775"},
-    {file = "Django-5.0.4.tar.gz", hash = "sha256:4bd01a8c830bb77a8a3b0e7d8b25b887e536ad17a81ba2dce5476135c73312bd"},
+    {file = "Django-4.2.2-py3-none-any.whl", hash = "sha256:672b3fa81e1f853bb58be1b51754108ab4ffa12a77c06db86aa8df9ed0c46fe5"},
+    {file = "Django-4.2.2.tar.gz", hash = "sha256:2a6b6fbff5b59dd07bef10bcb019bee2ea97a30b2a656d51346596724324badf"},
 ]
 
 [package.dependencies]
-asgiref = ">=3.7.0,<4"
+asgiref = ">=3.6.0,<4"
 sqlparse = ">=0.3.1"
 tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 
 [package.extras]
 argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-phonenumber-field"
+version = "7.3.0"
+description = "An international phone number field for django models."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django-phonenumber-field-7.3.0.tar.gz", hash = "sha256:f9cdb3de085f99c249328293a3b93d4e5fa440c0c8e3b99eb0d0f54748629797"},
+    {file = "django_phonenumber_field-7.3.0-py3-none-any.whl", hash = "sha256:bc6eaa49d1f9d870944f5280258db511e3a1ba5e2fbbed255488dceacae45d06"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+phonenumbers = {version = ">=7.0.2", optional = true, markers = "extra == \"phonenumbers\""}
+
+[package.extras]
+phonenumbers = ["phonenumbers (>=7.0.2)"]
+phonenumberslite = ["phonenumberslite (>=7.0.2)"]
 
 [[package]]
 name = "executing"
@@ -186,6 +205,17 @@ files = [
 
 [package.dependencies]
 ptyprocess = ">=0.5"
+
+[[package]]
+name = "phonenumbers"
+version = "8.13.37"
+description = "Python version of Google's common library for parsing, formatting, storing and validating international phone numbers."
+optional = false
+python-versions = "*"
+files = [
+    {file = "phonenumbers-8.13.37-py2.py3-none-any.whl", hash = "sha256:4ea00ef5012422c08c7955c21131e7ae5baa9a3ef52cf2d561e963f023006b80"},
+    {file = "phonenumbers-8.13.37.tar.gz", hash = "sha256:bd315fed159aea0516f7c367231810fe8344d5bec26156b88fa18374c11d1cf2"},
+]
 
 [[package]]
 name = "pillow"
@@ -514,4 +544,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "8e88d143d0644e63fd37debeb68f5baf76bde1efc483128da2bf83e2f82b4a7e"
+content-hash = "0d9e11de8542c3e861ccdfd9150ed244e877b287038ed8227d3b119ebdedf4b3"

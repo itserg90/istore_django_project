@@ -18,11 +18,11 @@ class CategoryAdmin(DataMixin, admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(DataMixin, admin.ModelAdmin):
     fields = ['name', 'slug', 'description', 'image', 'post_image', 'category', 'price',
-              'is_published', 'views_count',]
+              'is_published', 'user', 'views_count',]
     list_display = ('name', 'slug', 'post_image', 'price', 'category')
     list_filter = ('category',)
     search_fields = ('name', 'description')
-    readonly_fields = ('post_image', 'views_count',)
+    readonly_fields = ('post_image', 'user', 'views_count',)
 
     @admin.display(description='Картинка')
     def post_image(self, product: Product):
