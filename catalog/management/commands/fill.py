@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
     @staticmethod
     def json_read_categories_and_products():
-        with open('data.json') as file:
+        with open('data1.json') as file:
             return json.load(file)
 
     def handle(self, *args, **options):
@@ -33,6 +33,7 @@ class Command(BaseCommand):
             if element['model'] == 'catalog.product':
                 product = element['fields']
                 products_for_create.append(Product(name=product['name'],
+                                                   slug=product['slug'],
                                                    description=product['description'],
                                                    image=product['image'],
                                                    category=Category.objects.get(pk=product['category']),
