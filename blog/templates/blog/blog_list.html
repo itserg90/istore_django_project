@@ -13,9 +13,13 @@
                         <p class="card-text">{{ object.content|truncatewords:50 }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a class="btn btn-primary" href="{% url 'blog:blog_detail' object.slug %}" role="button">Посмотреть</a>
-                                <a class="btn btn-secondary" href="{% url 'blog:blog_update' object.slug %}" role="button">Изменить</a>
+                                <a class="btn btn-primary" href="{% url 'blog:blog_detail' object.slug %}"
+                                   role="button">Посмотреть</a>
+                                {% if perms.blog.add_blog and perms.blog.change_blog and perms.blog.delete_blog %}
+                                <a class="btn btn-secondary" href="{% url 'blog:blog_update' object.slug %}"
+                                   role="button">Изменить</a>
                                 <a class="btn btn-danger" href="{% url 'blog:blog_delete' object.slug %}" role="button">Удалить</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

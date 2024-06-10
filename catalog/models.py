@@ -44,6 +44,9 @@ class Product(SlugMixin, models.Model):
     class Meta:
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
+        permissions = [
+            ('unpublished', 'Can unpublished')
+        ]
 
 
 class Contact(SlugMixin, models.Model):

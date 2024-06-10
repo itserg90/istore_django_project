@@ -190,9 +190,11 @@
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">Статьи</h1>
                 <p class="lead text-body-secondary">Все о товарах</p>
+                {% if perms.blog.add_blog and perms.blog.change_blog and perms.blog.delete_blog %}
                 <p>
                     <a href="{% url 'blog:blog_create' %}" class="btn btn-primary my-2">Создать</a>
                 </p>
+                {% endif %}
             </div>
         </div>
     </section>

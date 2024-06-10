@@ -16,7 +16,7 @@ class StyleFormMixin(ModelForm):
 class ProductForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'image', 'price', 'category', 'is_published']
+        fields = ['name', 'description', 'image', 'price', 'category', 'is_published', 'user']
 
     FORBIDDEN_WORDS = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
                        'радар']
@@ -34,6 +34,12 @@ class ProductForm(StyleFormMixin, ModelForm):
         cleaned_data = self.cleaned_data.get('description')
         self.check_words(cleaned_data)
         return cleaned_data
+
+
+class ProductModeratorForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Product
+        fields = ['description', 'category', 'is_published']
 
 
 class VersionForm(StyleFormMixin, ModelForm):
