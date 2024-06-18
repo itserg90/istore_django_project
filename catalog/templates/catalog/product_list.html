@@ -7,7 +7,9 @@
             {% for product in products %}
             <div class="col">
                 <div class="card shadow-sm">
+                    {% if product.1.image %}
                     <img src="{{ product.1.image | media_filter }}">
+                    {% endif %}
                     <div class="card-body">
                         <p class="card-text">Текущая версия: {{ product.0.version }}</p>
                         <p class="card-text">{{ product.1.name }}</p>

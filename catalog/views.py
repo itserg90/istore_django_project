@@ -6,7 +6,16 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
 
 from catalog.forms import ProductForm, VersionForm, ProductModeratorForm
-from catalog.models import Product, Contact, Version
+from catalog.models import Product, Contact, Version, Category
+from catalog.services import get_categories_from_cache
+
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'catalog/categories.html'
+
+    def get_queryset(self):
+        return get_categories_from_cache()
 
 
 class ProductListView(ListView):
